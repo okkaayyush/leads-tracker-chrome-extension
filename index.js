@@ -2,19 +2,21 @@ const inputBtn = document.getElementById("input-btn")
 const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
 
-let myLeads = ["aayush.com","bhoj.com"];
+let myLeads = [];
 
 inputBtn.addEventListener("click", function(){
     let lead = inputEl.value;
     myLeads.push(lead);
-    console.log(myLeads)
+    renderLead();
+    inputEl.value="";
 })
 
-for(let i=0;i<myLeads.length;i++){
-    ulEl.innerHTML += "<li>" + myLeads[i] + "</li"
-
-    // We can also use
-    // const li = document.createElement("li")
-    // li.textContent = myLeads[i]
-    // ulEl.append(li)
+function renderLead(){
+let listItem= `
+        <li>
+            <a target='_blank' href='${inputEl.value}'>
+                ${inputEl.value}
+            </a> </li>
+`
+ulEl.innerHTML += listItem
 }
